@@ -1,0 +1,165 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{Agent/LayoutAgent}">
+<head>
+<style>
+#conteneur {
+	display: flex;
+	justify-content: space-around;
+	border: 2px solid black;
+}
+
+.element {
+	width: 300px;
+	height: 250px;
+}
+
+.element:nth-child(1) {
+	border: 4px solid blue;
+}
+
+.element:nth-child(2) {
+	border: 4px solid green;
+}
+
+.element:nth-child(3) {
+	border: 4px solid red;
+}
+</style>
+</head>
+<body>
+	<div layout:fragment="breadcrumb">
+
+		<h1>Nouvelle Operation/Liste Des Operations</h1>
+
+		<div id="conteneur">
+			<form  th:action="@{operations/retrait}" method="post"
+				th:object="${operation}">
+				<h4 style="color: orange;">Retrait</h4>
+				<div class="element" style="border: 6px solid orange;">
+
+					<label> Code_Compte_Emetteur </label> 
+					<input type="text" class="form-control" th:field=*{compteEmetteur}  name="compteEmetteur" /> 
+					<label>  Montant </label><br> <input type="number" name="montant"
+						class="form-control" th:field=*{montant} />
+					<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Valider</button>
+
+				</div>
+			</form>
+			<form  th:action="@{operations/versement}" method="post"
+				th:object="${operation}">
+				<h4 style="color: green;">VERESSEMENT</h4>
+				<div class="element" style="border: 6px solid green;">
+
+					<label> Code_Compte_Recepteur</label> 
+					<input type="text" class="form-control" th:field=*{compteRecepteur} name="compteRecepteur" /> 
+					<label>  Montant </label><br> <input type="number"
+						class="form-control" th:field=*{montant}  name="montant" />
+					<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Valider</button>
+
+				</div>
+			</form>
+			<form  th:action="@{operations/virement}" method="post"
+				th:object="${operation}">
+				<h4 style="color: red;">VIREMENT</h4>
+				<div class="element" style="border: 6px solid red;">
+
+					<label> Code_Compte_Emetteur </label> 
+					<input type="text" class="form-control" th:field=*{compteEmetteur} name="compteEmetteur"/> 
+					<label> Code_Compte_Recepteur</label> 
+					<input type="text" class="form-control" th:field=*{compteRecepteur} name="compteRecepteur"/> 
+					<label> Montant </label><br> <input type="number"
+						class="form-control" th:field=*{montant}  name="montant" />
+					<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="submit" class="btn btn-primary">Valider</button>
+
+				</div>
+			</form>
+			</div>
+
+		<div layout:fragment="content">
+			<h2>Liste Des Operations</h2>
+
+
+
+
+			<div class="row">
+
+
+				<div class="col-xs-12">
+					<div class="box box-primary">
+
+
+
+
+						<!-- /.box-header -->
+						<div class="box-body">
+
+
+
+
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+
+									<thead>
+										<tr>
+
+											<th>ID</th>
+											<th>TYPE</th>
+											<th>MONTANT</th>
+											<th>DATE_OPERATION</th>
+											
+											<th>CODE_COMPTE_EMETTEUR</th>
+											<th>CODE_COMPTE_RECEPTEUR</th>
+
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="c:${operations}">
+											<td th:text="${c.id}" />
+
+											<td th:text="${c.type}" />
+											<td th:text="${c.montant}" />
+
+											<td th:text="${c.dateOperation}" />
+											<td th:if="${c.compteEmetteur}==null">---</td>
+											<td th:unless="${c.compteEmetteur}==null"
+												th:text="${c.compteEmetteur.codeCompte}" />
+
+											<td th:if="${c.compteRecepteur}==null">---</td>
+											<td th:unless="${c.compteRecepteur}==null"
+												th:text="${c.compteRecepteur.codeCompte}" />
+										</tr>
+										<tr th:each="c:${operationsR}">
+											<td th:text="${c.id}" />
+
+											<td th:text="${c.type}" />
+											<td th:text="${c.montant}" />
+
+											<td th:text="${c.dateOperation}" />
+											<td th:if="${c.compteEmetteur}==null">---</td>
+											<td th:unless="${c.compteEmetteur}==null"
+												th:text="${c.compteEmetteur.codeCompte}" />
+
+											<td th:if="${c.compteRecepteur}==null">---</td>
+											<td th:unless="${c.compteRecepteur}==null"
+												th:text="${c.compteRecepteur.codeCompte}" />
+										</tr>
+
+
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

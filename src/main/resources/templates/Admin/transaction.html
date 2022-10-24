@@ -1,0 +1,125 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{Admin/Layout}">
+<body>
+	<div layout:fragment="breadcrumb">
+					
+		<div class="row">
+		
+						
+			<div class="col-xs-12">
+				<div class="box box-warning">
+
+
+
+
+					<!-- /.box-header -->
+					<div class="box-body">
+						
+		<h1>Rapport Des Transactions Des Agences</h1>
+		<br>
+		<form class="form-inline" th:action="@{listDesOperations}"
+			method="post">
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AGENCE</label><br>&nbsp;&nbsp;&nbsp;
+
+				<select class="form-control" name="nom">
+
+					<option th:each="c:${Agences}" th:text="${c.nom}"
+						th:value="${c.nom}"></option>
+
+				</select>
+
+			</div>
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GENRE</label><br>&nbsp;&nbsp;&nbsp;
+
+				<select class="form-control" name="genre">
+
+					<option  th:text="Depots" ></option>
+						<option  th:text="Retrais"></option>
+
+				</select>
+
+			</div>
+			<div class="form-group">
+				<label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATE DU :</label><br>&nbsp;&nbsp;&nbsp; <input type="date"
+					name="dateDebut" class="form-control" />
+			</div>
+<div class="form-group">
+				<label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATE AU :</label><br>&nbsp;&nbsp;&nbsp; <input type="date"
+					name="dateFin" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTION</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="submit" class="btn btn-primary">Afficher</button>
+			</div>
+
+		</form>
+
+	</div>
+	
+	</div>
+	
+	</div>
+	
+	</div>
+	<div class="row">
+		
+						
+			<div class="col-xs-12">
+				<div class="box box-primary">
+
+
+
+
+					<!-- /.box-header -->
+					<div class="box-body">
+						
+					
+
+
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+
+							<thead>
+								<tr>
+
+									<th>CODE</th>
+									<th>MONTANT</th>
+									<th>DATE_OPERATION</th>
+									<th>TYPE</th>
+									
+
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c:${operationsEmis}">
+									<td th:text="${c.id}" />
+									<td th:text="${c.montant}" />
+									<td th:text="${c.dateOperation}" />
+									<td th:text="${c.type}" />
+									
+									
+								</tr>
+								<tr th:each="c:${operationsRecus}">
+									<td th:text="${c.id}" />
+									<td th:text="${c.montant}" />
+									<td th:text="${c.dateOperation}" />
+									<td th:text="${c.type}" />
+									
+									
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+	</div>
+</body>
+</html>

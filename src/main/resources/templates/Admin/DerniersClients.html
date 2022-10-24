@@ -1,0 +1,103 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{Admin/layout}">
+<head>
+<style>
+#conteneur {
+	display: flex;
+	justify-content: space-around;
+	border: 2px solid black;
+}
+
+.element {
+	width: 300px;
+	height: 250px;
+}
+
+.element:nth-child(1) {
+	border: 4px solid blue;
+}
+
+.element:nth-child(2) {
+	border: 4px solid green;
+}
+
+.element:nth-child(3) {
+	border: 4px solid red;
+}
+</style>
+
+
+</head>
+<body>
+	<div layout:fragment="breadcrumb">
+
+		<div id="conteneur" >
+			<div class="element" th:object="${retrais}">
+				<h1 style="color:blue">Retrait</h1>
+				<img style="float:left" src="../static/moins.jpg" width="100" th:src="@{/plus.png}" />
+								<h1 style="background:blue;height: 100px; " th:text=${retrais}> </h1>
+				
+
+			</div>
+			<div class="element" th:object="${retrais}">
+				<h1 style="color:green">Depot</h1>
+				
+				<img style="float:left " src="../static/plus1.png" width="100" th:src="@{/moins.png}" />
+								<h1 style="background:green;height: 100px;" th:text=${depot}> }</h1>
+			</div>
+			<div class="element" th:object="${virement}">
+				<h1 style="color:red">Virement</h1>
+
+				<img style="float:left;" src="../static/vir.jpg" width="120" height="100"th:src="@{/virement.png}" />
+								<h1 style="background:red;height: 100px; " th:text=${virement}></h1>
+				
+			</div>
+
+
+
+		</div>
+		<div layout:fragment="content">
+			<h1>Derniers Clients Inscrits</h1>
+
+
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="box box-primary">
+
+						<!-- /.box-header -->
+						<div class="box-body">
+
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+									<thead>
+
+										<tr>
+
+											<th>CIN</th>
+											<th>NOM</th>
+											<th>PRENOM</th>
+											<th>THELEPHONE</th>
+											<th>DateInscrit</th>
+
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="c:${DerniersClients.content}">
+											<td th:text="${c.getcin()}" />
+											<td th:text="${c.getNom()}" />
+											<td th:text="${c.getPrenom()}" />
+											<td th:text="${c.getTelephone()}" />
+											<td th:text="${c.getDate()}" />
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+</html>

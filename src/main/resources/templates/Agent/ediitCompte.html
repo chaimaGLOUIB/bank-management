@@ -1,0 +1,105 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{Agent/LayoutAgent}">
+
+
+<head>
+<title></title>
+
+
+</head>
+<body>
+	<div layout:fragment="breadcrumb">
+
+		<h1>Modification Du Compte</h1>
+		<br>
+		
+		
+		<div class="panel panel-default">
+		<div class="panel-heading">
+		<form th:action="@{UpdateCompte}" method="post"
+			th:object="${compte}">
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CODECOMPTE</label><br>&nbsp;&nbsp;&nbsp;
+
+				<select class="form-control" th:field="*{codeCompte}">
+
+					<option th:value="${compte.codeCompte}" th:text="${compte.codeCompte}"></option>
+
+				</select>
+
+			</div>
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE</label><br>&nbsp;&nbsp;&nbsp;
+
+				<select class="form-control" th:field="*{type}">
+
+					<option th:value="Compte_Courant" th:text="Compte_Courant"></option>
+					<option th:value="Compte_Epargne" th:text="Compte_Epargne"></option>
+
+				</select>
+
+			</div>
+
+
+			<div class="form-group">
+				<label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DATE_CREATION</label><br>&nbsp;&nbsp;&nbsp;
+				<input type="date" th:field="*{dateCreation}" class="form-control" />
+			</div>
+
+
+
+
+
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLIENTS</label><br>	&nbsp;&nbsp;&nbsp;
+				<select  class="form-control" th:field="*{clients}"  MULTIPLE>
+
+					<option th:each="c:${clients}" th:text="${c.getcin()}"
+						th:value="${c.getcin()}"></option>
+
+				</select>
+
+			</div>
+			
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTIVE</label><br>
+				&nbsp;&nbsp;&nbsp; <select class="form-control" th:field="*{active}">
+
+					<option th:value="0">0</option>
+					<option th:value="1">1</option>
+
+				</select>
+
+
+
+
+			</div>
+
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;SOLDEMAX</label><br> <input
+					type="number" th:field="*{soldMax}" class="form-control" />
+
+			</div>
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;DECOUVERT</label><br> <input
+					type="number" th:field="*{decouvert}" class="form-control" />
+
+			</div>
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;TAUX</label><br> <input
+					type="number" th:field="*{taux}" class="form-control" />
+
+			</div>
+
+
+
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="submit" class="btn btn-primary">Enregistrer</button>
+			</div>
+		</form>
+	</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{Client/layoutClient}">
+<head>
+<title>List Operations</title>
+
+
+</head>
+<body>
+	<div layout:fragment="breadcrumb">
+		<br>
+		<br>
+		<h1>Mes Operations</h1>
+
+	</div>
+	<div layout:fragment="content">
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+
+					<!-- /.box-header -->
+					<div class="box-body">
+
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<thead>
+
+									<tr>
+
+										<th>id</th>
+										<th>TYPE</th>
+										<th>MONTANT</th>
+										<th>DATE_OPERATION</th>
+										<th>CODE_COMPTE_EMETTEUR</th>
+										<th>CODE_COMPTE_RECEPTEUR</th>
+
+
+
+
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="c:${operations}">
+										<td th:text="${c.id}" />
+
+										<td th:text="${c.type}" />
+										<td th:text="${c.montant}" />
+
+										<td th:text="${c.dateOperation}" />
+										<td th:if="${c.compteEmetteur}==null">---</td>
+										<td th:unless="${c.compteEmetteur}==null"
+											th:text="${c.compteEmetteur.codeCompte}" />
+
+										<td th:if="${c.compteRecepteur}==null">---</td>
+										<td th:unless="${c.compteRecepteur}==null"
+											th:text="${c.compteRecepteur.codeCompte}" />
+									</tr>
+									<tr th:each="c:${operationsR}">
+										<td th:text="${c.id}" />
+
+										<td th:text="${c.type}" />
+										<td th:text="${c.montant}" />
+
+										<td th:text="${c.dateOperation}" />
+										<td th:if="${c.compteEmetteur}==null">---</td>
+										<td th:unless="${c.compteEmetteur}==null"
+											th:text="${c.compteEmetteur.codeCompte}" />
+
+										<td th:if="${c.compteRecepteur}==null">---</td>
+										<td th:unless="${c.compteRecepteur}==null"
+											th:text="${c.compteRecepteur.codeCompte}" />
+									</tr>
+
+
+
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

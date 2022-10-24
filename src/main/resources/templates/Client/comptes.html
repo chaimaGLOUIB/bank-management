@@ -1,0 +1,68 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{Client/layoutClient}">
+<head>
+    <title>List Clients</title>
+
+
+</head>
+<body>
+<div layout:fragment="breadcrumb">
+    <br><br><h1> Mes Comptes</h1>
+    
+</div>
+<div layout:fragment="content">
+    <br><br><div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+
+                            <tr>
+                       
+                                <th >CODE</th>
+                                <th >TYPE</th>
+                                <th >SOLD</th>
+                                <th >ACTIVE</th>
+                                <th >DATE_DE_CREATION</th>
+                                <th >DECOUVERT</th>
+                                <th >SOLDMAX</th>
+                                <th >TAUX</th>
+                                
+                               
+                                
+                               
+                                  
+                            </tr>
+                            </thead>
+                            <tbody>
+                           <tr th:each="c:${comptesC}">
+                           <td th:text="${c.codeCompte}"/>
+                            <td th:text="${c.type}"/>
+                             <td th:text="${c.solde}"/>
+                             <td th:text="${c.active}"/>
+                              <td th:text="${c.dateCreation}"/>
+                              <td th:if="${c.decouvert}==0">---</td>
+           <td th:unless="${c.decouvert}==0" th:text="${c.decouvert}"/>
+           <td th:if="${c.soldMax}==0">---</td>
+           <td th:unless="${c.soldMax}==0" th:text="${c.soldMax}"/>
+<td th:if="${c.taux}==0">---</td>
+           <td th:unless="${c.taux}==0" th:text="${c.taux}"/>                        
+                              
+                             
+                            
+                           
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Banque</title>
+
+
+    
+	<!-- css files -->
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="css/css_slider.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+	
+
+	
+</head>
+<body>
+
+<!-- header -->
+<header>
+	<div class="top-head container">
+		<div class="ml-auto text-right right-p">
+			<ul>
+				<li class="mr-3">
+				<br>
+				
+					<span class="fa fa-phone-square fa-2x"style="font-size:35px;color:black"></span>+212 633043619</li>
+				<li>
+					<span class="fa fa-envelope-open" style="font-size:35px;color:black"></span> <a href="www.gmail.com">Bank@gmail.com</a> </li>
+				<li>
+					<span class= "fa fa-facebook-square fa-2x"style="font-size:35px;color:black"></span> <a href="www.facebook.com">Facebook</a> </li>
+				<li>
+					<span class="fa fa-twitter-square fa-2x"style="font-size:35px;color:black"></span> <a href="www.twitter.com">Twitter </a> </li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="index.html"><span class="fa fa-gift"></span> Banque </a></h1>
+				</div>
+				</nav>
+				</div>
+			
+</header>
+
+
+<!-- banner -->
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7 banner-text-w3ls">
+					<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4" style="color:green">Bienvenue</h3>
+										<h4 class="b-w3ltxt text-capitalize mt-md-2">Tout à propos de toi</h4>
+										<p class="w3ls_pvt-title my-3">Des comptes chèques pratiques et riches en fonctionnalités,simplifient la gestion de votre argent</p>
+									</div>
+								</div>
+							</li>
+							
+							
+						</ul>
+						<div class="navigation">
+							<div>
+								<label for="slides_1"></label>
+								<label for="slides_2"></label>
+								<label for="slides_3"></label>
+							</div>
+						</div>
+					</div>
+					<!-- //banner slider-->
+				</div>
+				<div class="col-lg-5 col-md-8 px-lg-3 px-0">
+					<div class="banner-form-w3 ml-lg-5">
+						<div class="padding">
+                       <form action="#" th:action="@{/login}" method="post">
+								<h3 class="mb-3" style="color:green;">Connectez-vous </h3>
+								<div class="form-style-w3layout">
+									<input placeholder="Your Cin" name="username" type="text" >
+									<input placeholder="Your Password" name="password" type="password" data-toggle="password" >
+									
+									<button Class="btn"> Se Connecter</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+	
+</body>
+</html>

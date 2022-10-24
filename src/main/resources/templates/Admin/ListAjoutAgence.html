@@ -1,0 +1,131 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{Admin/Layout}">
+
+
+<head>
+<title>List Clients</title>
+
+
+</head>
+<body>
+	<div layout:fragment="breadcrumb">
+
+		<h1>Nouvelle Agence/Liste Des Agences</h1>
+		<br>
+		<form class="form-inline" th:action="@{saveAgence}" method="post"
+			th:object="${Agence}">
+			<div class="form-group">
+				<label>&nbsp;&nbsp;Code De l'Agence</label><br> <input
+					type="text" th:field="*{codeAgence}" class="form-control" />
+                    <span th:errors="*{codeAgence}"></span>
+			</div>
+
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nom De l'Agence</label><br>
+				&nbsp;&nbsp;&nbsp;<input type="text" class="form-control"
+					th:field="*{nom}" />
+					                    <span th:errors="*{nom}"></span>
+					
+
+			</div>
+
+			<div class="form-group">
+				<label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ville De
+					l'Agence</label><br>&nbsp;&nbsp;&nbsp; <input type="text"
+					th:field="*{ville}" class="form-control" />
+					                    <span th:errors="*{ville}"></span>
+					
+			</div>
+			<div class="form-group">
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adresse De l'Agence</label><br>
+				&nbsp;&nbsp;&nbsp;<input type="text" th:field="*{Adresse}"
+					class="form-control" /> <span th:errors="*{Adresse}"></span>
+
+			</div>
+			<div class="form-group">
+				 <label>&nbsp;&nbsp;Contact De l'Agence</label><br>
+				<input type="text" th:field="*{contact}" class="form-control" />
+				                    <span th:errors="*{codeAgence}"></span>
+				
+			</div>
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email De
+					l'Agence</label><br>&nbsp;&nbsp;&nbsp;<input type="email"
+					th:field="*{Email}" class="form-control" />
+					                    <span th:errors="*{Email}"></span>
+					
+			</div>
+			<div class="form-group">
+				<br> <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action</label><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="submit" class="btn btn-primary">Enregistrer</button>
+			</div>
+		</form>
+
+	</div>
+
+	<div layout:fragment="content">
+		<h1>Liste Des Agences</h1>
+		<br>
+		
+<form th:action="@{ListAjoutAgence}" method="get">
+							<div class="form-group">
+								<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mot Cle</label>
+								&nbsp;&nbsp;&nbsp;<input type="text" name="motCle"/>
+								<button type="submit" class="btn btn-primary">
+									Rechercher</button>
+									</div>
+						</form>
+						
+		<div class="row">
+		
+						
+			<div class="col-xs-12">
+				<div class="box box-primary">
+
+
+
+
+					<!-- /.box-header -->
+					<div class="box-body">
+						
+					
+
+
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+
+							<thead>
+								<tr>
+
+									<th>CODE</th>
+									<th>NOM</th>
+									<th>ADRESSE</th>
+									<th>CONTACT</th>
+									<th>EMAIL</th>
+									<th>ACTION</th>
+
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c:${Agences}">
+									<td th:text="${c.codeAgence}" />
+									<td th:text="${c.nom}" />
+									<td th:text="${c.adresse}" />
+									<td th:text="${c.contact}" />
+									<td th:text="${c.Email}" />
+									<td><a onclick="return confirm('Etes vous sure?')" th:href="@{ListAjoutAgence/supprimer(code=${c.codeAgence})}">Supprimer</a>
+									<br><br><a  th:href="@{ListAjoutAgence/editer(code=${c.codeAgence})}">Editer</a></td>
+
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
